@@ -25,4 +25,17 @@ class PicturesController < ApplicationController
 
     redirect_to("http://localhost:3000/all_pictures")
   end
+
+  def edit
+    @picture = Picture.find(params[:id])
+    end
+
+  def update
+    g = Picture.find_by({ :id => params[:id]})
+    g.caption = params[:caption]
+    g.source = params[:source]
+    g.save
+
+    redirect_to("http://localhost:3000/all_pictures")
+  end
 end
